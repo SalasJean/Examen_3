@@ -208,6 +208,7 @@ curl -X GET http://localhost:8080/api/sunat/ruc/20601030013
 
 **Resultado esperado:** `200 OK` con datos de la empresa REXTIE S.A.C.
 
+<img width="1184" height="769" alt="image" src="https://github.com/user-attachments/assets/b74db9b7-5a08-447d-83f2-48a1b601b477" />
 ---
 
 ### ❌ Prueba 2: RUC inválido (ERROR - formato)
@@ -223,6 +224,8 @@ curl -X GET http://localhost:8080/api/sunat/ruc/123
   "message": "RUC debe tener exactamente 11 dígitos"
 }
 ```
+<img width="1195" height="573" alt="image" src="https://github.com/user-attachments/assets/23cc2ac1-f849-400f-bbf1-051699f71795" />
+
 
 ---
 
@@ -239,6 +242,7 @@ curl -X GET http://localhost:8080/api/sunat/ruc/99999999999
   "message": "ruc no valido"
 }
 ```
+<img width="1174" height="572" alt="image" src="https://github.com/user-attachments/assets/ee126bb9-1124-4ccc-b5ca-98650d5de97a" />
 
 ---
 
@@ -248,10 +252,15 @@ curl -X GET http://localhost:8080/api/sunat/ruc/99999999999
 ```bash
 curl -X GET http://localhost:8080/api/sunat/ruc/20601030013/consultas
 ```
+<img width="1167" height="923" alt="image" src="https://github.com/user-attachments/assets/16390888-5f10-4bd1-8980-7b083bc2d406" />
+
+<img width="1174" height="760" alt="image" src="https://github.com/user-attachments/assets/2857ec7e-e98a-42bf-a8e9-47b5f87c3e56" />
 
 **Resultado esperado:** `200 OK` con lista de consultas ordenadas desc.
 
 ---
+<img width="1602" height="306" alt="image" src="https://github.com/user-attachments/assets/2ed16bb3-4e39-4220-ab7f-a6241329dfa4" />
+
 
 ## 🗄️ Modelo de Base de Datos
 
