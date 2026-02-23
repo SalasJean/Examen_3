@@ -15,20 +15,14 @@ public class FeignConfig {
     public FeignConfig(DecolectaProperties properties) {
         this.properties = properties;
     }
-
-    // ─────────────────────────────────────────
-    // Authorization: Bearer <TOKEN> en cada request
-    // ─────────────────────────────────────────
+    //autorizacion recuerda
     @Bean
     public RequestInterceptor requestInterceptor() {
         return requestTemplate -> requestTemplate
                 .header("Authorization", "Bearer " + properties.getToken());
     }
 
-    // ─────────────────────────────────────────
-    // Registra el ErrorDecoder para interceptar
-    // 4xx/5xx de Decolecta ANTES de que exploten
-    // ─────────────────────────────────────────
+    //registra el error recuerda
     @Bean
     public ErrorDecoder errorDecoder() {
         return new DecolectaErrorDecoder(new ObjectMapper()); // ✅ ESTE ERA EL QUE FALTABA

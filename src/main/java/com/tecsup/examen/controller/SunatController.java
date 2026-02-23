@@ -22,22 +22,12 @@ public class SunatController {
         this.sunatService = sunatService;
     }
 
-    // ─────────────────────────────────────────
-    // ENDPOINT 1: Consultar RUC y guardar
-    // GET /api/sunat/ruc/{ruc}
-    // Sección 7 endpoint 1 del PDF
-    // ─────────────────────────────────────────
     @GetMapping("/ruc/{ruc}")
     public ResponseEntity<CompanyResponse> consultarRuc(@PathVariable String ruc) {
         CompanyResponse response = sunatService.consultarRuc(ruc);
         return ResponseEntity.ok(response);
     }
 
-    // ─────────────────────────────────────────
-    // ENDPOINT 2: Ver historial de consultas por RUC
-    // GET /api/sunat/ruc/{ruc}/consultas
-    // Sección 7 endpoint 2 del PDF
-    // ─────────────────────────────────────────
     @GetMapping("/ruc/{ruc}/consultas")
     public ResponseEntity<List<ConsultaResponse>> obtenerHistorial(@PathVariable String ruc) {
         List<ConsultaResponse> historial = sunatService.obtenerHistorial(ruc);

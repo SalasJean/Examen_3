@@ -45,10 +45,6 @@ public class DecolectaErrorDecoder implements ErrorDecoder {
         };
     }
 
-    // ─────────────────────────────────────────
-    // Extrae el campo "message" del body del proveedor
-    // si no puede, retorna null sin explotar
-    // ─────────────────────────────────────────
     private String extraerMensaje(Response response) {
         if (response.body() == null) return null;
         try (InputStream body = response.body().asInputStream()) {

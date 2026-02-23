@@ -29,11 +29,10 @@ public class Consulta {
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
-    // Relación ManyToOne opcional (null si la consulta falló)
-    // ✅ RELACIÓN CORRECTA: Muchas consultas pertenecen a una empresa
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
-    private Company company;  // 👈 ¡El nombre DEBE ser "company"!
+    private Company company;
 
     @PrePersist
     protected void onCreate() {

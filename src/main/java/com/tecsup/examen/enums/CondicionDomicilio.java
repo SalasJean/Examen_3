@@ -1,11 +1,11 @@
 package com.tecsup.examen.enums;
 
-// 📌 2. Condición de domicilio (viene del campo "condicion")
+
 public enum CondicionDomicilio {
-    HABIDO,       // "HABIDO" desde API
-    NO_HABIDO,    // Por si viene "NO HABIDO"
-    PENDIENTE,    // Por si viene "PENDIENTE"
-    DESCONOCIDO;  // Fallback
+    HABIDO,
+    NO_HABIDO,
+    PENDIENTE,
+    DESCONOCIDO;
 
     public static CondicionDomicilio fromString(String value) {
         if (value == null) return DESCONOCIDO;

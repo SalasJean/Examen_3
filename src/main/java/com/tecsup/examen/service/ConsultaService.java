@@ -17,11 +17,6 @@ public class ConsultaService {
         this.consultaRepository = consultaRepository;
     }
 
-    // ─────────────────────────────────────────
-    // REQUIRES_NEW: se guarda en transacción propia
-    // aunque la transacción padre haga rollback
-    // esto garantiza que los ERROR también se persistan
-    // ─────────────────────────────────────────
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void registrarConsulta(String ruc,
                                   ResultadoConsulta resultado,

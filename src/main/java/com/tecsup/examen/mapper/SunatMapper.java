@@ -12,9 +12,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class SunatMapper {
 
-    // ─────────────────────────────────────────
-    // SunatRucResponse (proveedor) → Company (entity)
-    // ─────────────────────────────────────────
     public Company toEntity(SunatRucResponse response) {
         Company company = new Company();
         company.setRuc(response.numeroDocumento());
@@ -31,9 +28,6 @@ public class SunatMapper {
         return company;
     }
 
-    // ─────────────────────────────────────────
-    // Company (entity) → CompanyResponse (record)
-    // ─────────────────────────────────────────
     public CompanyResponse toCompanyResponse(Company company) {
         return new CompanyResponse(
                 company.getId(),
@@ -52,9 +46,6 @@ public class SunatMapper {
         );
     }
 
-    // ─────────────────────────────────────────
-    // Consulta (entity) → ConsultaResponse (record)
-    // ─────────────────────────────────────────
     public ConsultaResponse toConsultaResponse(Consulta consulta) {
         return new ConsultaResponse(
                 consulta.getId(),
@@ -66,10 +57,8 @@ public class SunatMapper {
         );
     }
 
-    // ─────────────────────────────────────────
     // Actualizar Company existente con datos frescos del proveedor
-    // (para el caso de que el RUC ya exista en BD)
-    // ─────────────────────────────────────────
+
     public void updateEntity(Company company, SunatRucResponse response) {
         company.setRazonSocial(response.razonSocial());
         company.setEstado(EstadoContribuyente.fromString(response.estado()));

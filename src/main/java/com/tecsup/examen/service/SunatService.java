@@ -24,18 +24,18 @@ public class SunatService {
     private final CompanyRepository companyRepository;
     private final ConsultaRepository consultaRepository;
     private final SunatMapper sunatMapper;
-    private final ConsultaService consultaService; // ✅ NUEVO
+    private final ConsultaService consultaService;
 
     public SunatService(SunatClient sunatClient,
                         CompanyRepository companyRepository,
                         ConsultaRepository consultaRepository,
                         SunatMapper sunatMapper,
-                        ConsultaService consultaService) { // ✅ NUEVO
+                        ConsultaService consultaService) {
         this.sunatClient = sunatClient;
         this.companyRepository = companyRepository;
         this.consultaRepository = consultaRepository;
         this.sunatMapper = sunatMapper;
-        this.consultaService = consultaService; // ✅ NUEVO
+        this.consultaService = consultaService;
     }
 
     @Transactional
@@ -47,7 +47,7 @@ public class SunatService {
                 .findByRucAndCreatedAtAfter(ruc, LocalDateTime.now().minusMinutes(10));
 
         if (cachedCompany.isPresent()) {
-            // ✅ usa consultaService en lugar de método privado
+            // usa consultaService en lugar de método privado
             consultaService.registrarConsulta(ruc, ResultadoConsulta.SUCCESS, null, null, cachedCompany.get());
             return sunatMapper.toCompanyResponse(cachedCompany.get());
         }
@@ -55,12 +55,12 @@ public class SunatService {
         try {
             SunatRucResponse response = sunatClient.consultarRuc(ruc);
             Company company = guardarOActualizarCompany(ruc, response);
-            // ✅ usa consultaService
+            //  usa consultaService
             consultaService.registrarConsulta(ruc, ResultadoConsulta.SUCCESS, null, null, company);
             return sunatMapper.toCompanyResponse(company);
 
         } catch (ProviderException ex) {
-            // ✅ REQUIRES_NEW garantiza que esto se guarda aunque haya rollback
+            //  REQUIRES_NEW garantiza que esto se guarda aunque haya rollback
             consultaService.registrarConsulta(ruc, ResultadoConsulta.ERROR, ex.getMessage(), ex.getStatusCode(), null);
             throw ex;
 
