@@ -25,6 +25,6 @@ public class FeignConfig {
     //registra el error recuerda
     @Bean
     public ErrorDecoder errorDecoder() {
-        return new DecolectaErrorDecoder(new ObjectMapper()); // ✅ ESTE ERA EL QUE FALTABA
+        return new DecolectaErrorDecoder(new ObjectMapper()); 
     }
 }
