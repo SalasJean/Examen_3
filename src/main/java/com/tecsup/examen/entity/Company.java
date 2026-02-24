@@ -38,11 +38,10 @@ public class Company {
     @Column(name = "es_agente_retencion")
     private Boolean  esAgenteRetencion;
 
-    // ✅ FIX 1: Quitamos insertable=false y updatable=false
+    
     @Column(name = "es_buen_contribuyente")
     private Boolean  esBuenContribuyente;
 
-    // ✅ FIX 2: Mapeamos explícitamente created_at
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;//recuerda que para evitar errroes devemos nombrarlo explicitamente
 
