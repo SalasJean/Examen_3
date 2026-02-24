@@ -22,7 +22,7 @@ public class DecolectaErrorDecoder implements ErrorDecoder {
         String mensajeProveedor = extraerMensaje(response);
 
         return switch (status) {
-            case 400, 422 -> new ProviderException( // ✅ agregamos 422
+            case 400, 422 -> new ProviderException( 
                     mensajeProveedor != null ? mensajeProveedor : "Solicitud inválida al proveedor",
                     status
             );
